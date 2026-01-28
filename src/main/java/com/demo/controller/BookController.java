@@ -65,4 +65,59 @@ public class BookController {
 		o1.flush();
 		o1.close();
 	}
+	
+	@GetMapping(value = "/updateBook")
+	public ModelAndView m6(ModelAndView m) {
+		m.setViewName("updateBook");
+		return m;
+	}
+	
+//	@PostMapping(value = "/updateBook/req")
+//	public ModelAndView m5(ModelAndView m,int id, String name, String description, double price, MultipartFile image) throws IOException {
+//		Book b = new Book();
+//		b.setId(id);
+//		b.setName(name);
+//		b.setDescription(description);
+//		b.setPrice(price);
+//		
+//		if(image.getSize() == 0) {
+//			byte[] image1 = bs.findImageById(id);
+//			b.setImage(image1);
+//		}
+//		else {
+//			b.setImage(image.getBytes());
+//		}
+//		Book b1 = bs.save(b);
+//		if(b1 != null) m.addObject("msg", "book updated successfully");
+//		else m.addObject("msg", "book not updated successfully");
+//		m.setViewName("index");
+//		return m;
+//	}
+	@PostMapping("/updateBook/req")
+	public ModelAndView m5(ModelAndView m,int id,String name,String description,Double price,
+	        MultipartFile image) throws IOException {
+		System.out.println(description);
+
+	    Book b = new Book();
+	    b.setId(id);
+	    b.setName(name);
+	    b.setDescription(description);
+
+	    if (price != null) {
+	        b.setPrice(price);
+	    } else {
+	        b.setPrice(bs.findById(id).getPrice()); // keep old price
+	    }
+
+	    if (image == null || image.getSize() == 0) {
+	        b.setImage(bs.findImageById(id));
+	    } else {
+	        b.setImage(image.getBytes());
+	    }
+
+	    Book b1 = bs.save(b);
+	    m.addObject("msg", b1 != null ? "Book updated successfully" : "Book not updated");
+	    m.setViewName("index");
+	    return m;
+	}
 }

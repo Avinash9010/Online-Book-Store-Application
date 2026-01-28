@@ -31,4 +31,9 @@ public class BookServiceImpl implements BookService {
 		return bd.findImageById(id);
 	}
 
+	@Override
+	public Book findById(int id) {
+		return bd.findById(id);
+	}
+
 }

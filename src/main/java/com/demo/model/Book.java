@@ -18,6 +18,7 @@ public class Book {
 	private double price;
 	@Column(columnDefinition = "longblob")
 	private byte[] image;
+	
 	public int getId() {
 		return id;
 	}

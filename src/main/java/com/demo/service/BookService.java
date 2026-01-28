@@ -8,4 +8,5 @@ public interface BookService {
 	Book save(Book b);
 	List<Book> findAll();
 	byte[] findImageById(int id);
+	Book findById(int id);
 }

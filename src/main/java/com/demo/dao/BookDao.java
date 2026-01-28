@@ -15,4 +15,5 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 	
 	@Query(value = "select image from Book where id=?1",nativeQuery = true)
 	byte[] findImageById(int id);
+	Book findById(int id);
 }

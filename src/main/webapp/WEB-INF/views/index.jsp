@@ -9,5 +9,7 @@
 </head>
 <body>
 index.jsp
+${uid}
+<a href="logout">logout</a>
 </body>
 </html>

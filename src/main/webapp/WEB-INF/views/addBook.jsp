@@ -9,7 +9,7 @@
 </head>
 <body>
 <center>
-		<form action="addBook/req1" method="post"
+		<form action="addBook" method="post"
 			enctype="multipart/form-data">
 			<table>
 				<tr>

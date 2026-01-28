@@ -83,7 +83,7 @@ body {
 <div class="signup-container">
     <div class="signup-card">
         <h2>Create Your Account</h2>
-        <form action="signUp/req" method="post">
+        <form action="signup" method="post">
             <input type="text" class="form-control" name="name" placeholder="Full Name" required>
             <input type="text" class="form-control" name="number" placeholder="Number" required>
             <input type="email" class="form-control" name="email" placeholder="Email Address" required>

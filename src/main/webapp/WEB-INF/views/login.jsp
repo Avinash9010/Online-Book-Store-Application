@@ -82,13 +82,13 @@ body {
 <div class="login-container">
     <div class="login-card">
         <h2>Login to Your Account</h2>
-        <form action="/login" method="post">
+        <form action="login" method="post">
             <input type="text" class="form-control" name="username" placeholder="Username or Email" required>
             <input type="password" class="form-control" name="password" placeholder="Password" required>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
         <div class="text-center mt-3">
-            Don't have an account? <a href="signUp">Sign Up here</a>
+            Don't have an account? <a href="signup">Sign Up here</a>
         </div>
         <div class="text-center mt-2">
             <a href="/forgot-password">Forgot Password?</a>

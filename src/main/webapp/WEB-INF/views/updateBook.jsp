@@ -8,7 +8,7 @@
 </head>
 <body>
 	<center>
-		<form action="updateBook/req" method="post" enctype="multipart/form-data">
+		<form action="updateBook" method="post" enctype="multipart/form-data">
 			<table>
 				<tr>
 					<td>Book ID:</td>

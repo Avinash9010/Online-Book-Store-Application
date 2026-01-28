@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.demo.model.Book;
+import com.demo.model.User;
 
 @Repository
 public interface BookDao extends JpaRepository<Book, Integer> {

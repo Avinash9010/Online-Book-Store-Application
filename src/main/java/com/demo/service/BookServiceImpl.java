@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.demo.dao.BookDao;
 import com.demo.model.Book;
+import com.demo.model.User;
 
 @Service
 @Transactional
@@ -35,5 +36,4 @@ public class BookServiceImpl implements BookService {
 	public Book findById(int id) {
 		return bd.findById(id);
 	}
-
 }

@@ -33,6 +33,52 @@ public class BookController {
 		return m;
 	}
 	
+	@GetMapping(value = "/aboutUs")
+	public ModelAndView aboutUs(ModelAndView m) {
+		m.setViewName("aboutUs");
+		return m;
+	}
+	
+	@GetMapping(value = "/contactUs")
+	public ModelAndView contactUs(ModelAndView m) {
+		m.setViewName("contactUs");
+		return m;
+	}
+	
+	@GetMapping(value = "/signUp")
+	public ModelAndView signUp(ModelAndView m) {
+		m.setViewName("signUp");
+		return m;
+	}
+	
+	@PostMapping(value = "/signUp/req")
+	public ModelAndView SignUpRequest(ModelAndView m,String name, String number, String email,
+			String password, String confirmPassword) {
+		System.out.println(name);
+		System.out.println(number);
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(confirmPassword);
+		if(!password.equals(confirmPassword)) {
+			m.addObject("msg", "password not matched");
+			m.setViewName("signUp");
+		}
+		else m.setViewName("index");
+		return m;
+	}
+	
+	@GetMapping(value = "/login")
+	public ModelAndView login(ModelAndView m) {
+		m.setViewName("login");
+		return m;
+	}
+	
+	@GetMapping(value = "/buyBook")
+	public ModelAndView buyBook(ModelAndView m) {
+		m.setViewName("buyBook");
+		return m;
+	}
+	
 	@GetMapping(value = "/addBook")
 	public ModelAndView m2(ModelAndView m) {
 		m.setViewName("addBook");
@@ -40,7 +86,7 @@ public class BookController {
 	}
 	
 	@PostMapping(value = "/addBook/req1")
-	public ModelAndView m3(ModelAndView m, String name, String description, double price, MultipartFile image) throws IOException {
+	public ModelAndView addBook(ModelAndView m, String name, String description, double price, MultipartFile image) throws IOException {
 		System.out.println(name);
 		System.out.println(description);
 		System.out.println(price);
@@ -58,7 +104,7 @@ public class BookController {
 	}
 	
 	@GetMapping(value = "/showimage/{id}")
-	public void m4(@PathVariable int id, HttpServletResponse res) throws IOException {
+	public void showImage(@PathVariable int id, HttpServletResponse res) throws IOException {
 		byte[] image = bs.findImageById(id);
 		OutputStream o1 = res.getOutputStream();
 		o1.write(image);
@@ -72,29 +118,8 @@ public class BookController {
 		return m;
 	}
 	
-//	@PostMapping(value = "/updateBook/req")
-//	public ModelAndView m5(ModelAndView m,int id, String name, String description, double price, MultipartFile image) throws IOException {
-//		Book b = new Book();
-//		b.setId(id);
-//		b.setName(name);
-//		b.setDescription(description);
-//		b.setPrice(price);
-//		
-//		if(image.getSize() == 0) {
-//			byte[] image1 = bs.findImageById(id);
-//			b.setImage(image1);
-//		}
-//		else {
-//			b.setImage(image.getBytes());
-//		}
-//		Book b1 = bs.save(b);
-//		if(b1 != null) m.addObject("msg", "book updated successfully");
-//		else m.addObject("msg", "book not updated successfully");
-//		m.setViewName("index");
-//		return m;
-//	}
 	@PostMapping("/updateBook/req")
-	public ModelAndView m5(ModelAndView m,int id,String name,String description,Double price,
+	public ModelAndView updateBook(ModelAndView m,int id,String name,String description,Double price,
 	        MultipartFile image) throws IOException {
 		System.out.println(description);
 

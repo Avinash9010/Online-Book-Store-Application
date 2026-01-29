@@ -18,7 +18,15 @@ public class Book {
 	private double price;
 	@Column(columnDefinition = "longblob")
 	private byte[] image;
+	private String category;
 	
+	
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
 	public int getId() {
 		return id;
 	}
@@ -51,6 +59,7 @@ public class Book {
 	}
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+		return "Book [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", category="
+				+ category + "]";
 	}
 }

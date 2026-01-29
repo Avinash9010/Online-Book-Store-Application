@@ -25,13 +25,14 @@ public class UpdateBookController {
 	}
 	
 	@PostMapping("/updateBook/req")
-	public ModelAndView updateBook(ModelAndView m,int id,String name,String description,Double price,
+	public ModelAndView updateBook(ModelAndView m,int id,String name,String category, String description,Double price,
 	        MultipartFile image) throws IOException {
 		System.out.println(description);
 
 	    Book b = new Book();
 	    b.setId(id);
 	    b.setName(name);
+	    b.setCategory(category);
 	    b.setDescription(description);
 
 	    if (price != null) {

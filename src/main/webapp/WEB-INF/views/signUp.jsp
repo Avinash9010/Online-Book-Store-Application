@@ -98,6 +98,9 @@ body {
         <div class="text-center mt-3">
             Already have an account? <a href="login">Login here</a>
         </div>
+        <div class="text-center mt-3">
+            <a href="/">Go to Home</a>
+        </div>
     </div>
 </div>
 

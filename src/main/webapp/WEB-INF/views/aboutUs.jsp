@@ -1,235 +1,175 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>About Us</title>
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
-    <style type=text/css>
-      body{
-         margin: 0;
-        padding: 0;
-        font-family: "open sans",sans-serif;
-        background: #e3dfdf;
-        background-size: cover;
-        height: 100%;
- 
-      }
-.about-section{
-  font-family: serif;
-  width: 70%;
-background:#fff;
-  padding: 40px 0;
-  margin-left: auto;
-  margin-right:auto;
-  margin-top: 10px;
-box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-border-radius: 30px;
-border-left: 50px solid #3CEDA7;
-border-right: 50px solid #3CEDA7;
- 
- 
-}
-.inner-width{
-  max-width: 1000px;
-  overflow: hidden;
-  padding: 0 20px;
-  margin: auto;
-}
-.about-section h1{
-  text-align: center;
-}
-.border{
-  width: 100px;
-  height: 3px;
-  background: #3CEDA7;
-  margin: 40px auto;
-}
-.about-section-row{
-  display: flex;
-  flex-wrap: wrap;
-}
-.about-section-col{
-  flex: 50%;
-}
-.about{
-  padding-right: 30px;
-}
-.about p{
-  text-align: justify;
-  margin-bottom: 20px;
-  color: #171615;
-  font-size: 17px;
-}
-.about a{
-  display: inline-block;
-  color: #1f1c1a;
-  text-decoration: none;
-  border: 2px solid #3CEDA7;
-  border-radius: 24px;
-  padding: 8px 40px;
-  transition: 0.4s linear;
-}
-.about a:hover{
-  color: #fff;
-  background: #3CEDA7;
-}
-.skills{
-  padding-left: 30px;
-  color: #171615;
-}
-.skill{
-  margin-bottom: 10px;
-  font-style: #1c1b19;
-}
-.title{
-  color: #7E7C7A
-}
-.progress{
-  width: 100%;
-  height: 12px;
-  background: #ddd;
-  border-radius: 12px;
-}
-.progress-bar{
-  height: 12px;
-  background: #3CEDA7;
-  border-radius: 12px;
-}
-.p1{
-  width: 90%;
-}
-.p2{
-  width: 70%;
-}
-.p3{
-  width: 50%;
-}
-.progress-bar span{
-  float: right;
-  margin-right: 6px;
-  line-height: 13px;
-  color: #fff;
-  font-size: 12px;
-}
-@media screen and (max-width:700px) {
-  .about-section-col{
-    flex: 100%;
-    margin: 10px 0;
-  }
-  .about,.skills{
-    padding: 0;
-  }
-  .about{
-    text-align: center;
-  }
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us</title>
+
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<style>
+body {
+	background-color: #f8f9fa;
+	font-family: Arial, sans-serif;
 }
 
-.topnav {
-  background-color: #333;
-  overflow: hidden;
+/* NAVBAR (same as home) */
+.navbar {
+	background-color: #fff;
 }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+.navbar .nav-link {
+	color: #555;
+	font-weight: 500;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+.navbar .nav-link:hover {
+	color: #0d6efd;
 }
 
-.topnav a.active {
-  background-color: #04AA6D;
-  color: white;
+.navbar-brand {
+	font-weight: bold;
 }
-    </style>
 
+/* ABOUT SECTION */
+.about-wrapper {
+	background: #fff;
+	padding: 50px;
+	border-radius: 15px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
 
-  </head>
-  <body>
-    <div class="topnav">
-      <a class="active" href="/">Home</a>
-      <a href="aboutUs">About Us</a>
-      <a href="contactUs">Contact Us</a>   
-  </div>
+.section-title {
+	font-weight: bold;
+	text-align: center;
+}
 
+.section-divider {
+	width: 80px;
+	height: 4px;
+	background: #0d6efd;
+	margin: 10px auto 30px;
+}
 
-  <div class="about-section">
-        <div class="inner-width">
-          <h1>About Us</h1>
-          <div class="border"></div>
-          <div class="about-section-row">
-            <div class="about-section-col">
-              <div class="about">
-                <p>
-                  At our bookstore, we are passionate about books and reading. We believe in the power of literature to inspire, educate, and entertain. Whether you are an avid reader or just starting your reading journey, we have something for everyone.
-                </p>
-                <a href="#">Read More</a>
-              </div>
-            </div>
-            <div class="about-section-col">
-              <div class="skills">
-                <div class="skill">
-                  <div class="title">Web Develpor</div>
-                  <div class="progress">
-                    <div class="progress-bar p1"><span>90%</span></div>
-                  </div>
-                </div>
- 
-                <div class="skill">
-                  <div class="title">UI Design</div>
-                  <div class="progress">
-                    <div class="progress-bar p2"><span>70%</span></div>
-                  </div>
-                </div>
- 
-                <div class="skill">
-                  <div class="title">UX Design</div>
-                  <div class="progress">
-                    <div class="progress-bar p3"><span>50%</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-          <h3>Visit Us</h3>
+/* SKILLS */
+.progress {
+	height: 14px;
+	border-radius: 10px;
+}
 
-        <p>
-            We are located at:
-            <br>
-            123 Book Street,
-            <br>
-            Cityville, State,
-            <br>
-            Country - 12345
-        </p>
+.progress-bar {
+	background-color: #0d6efd;
+	font-size: 12px;
+}
 
-        <p>
-            Feel free to drop by during our business hours:
-            <br>
-            Monday to Friday: 9:00 AM - 7:00 PM
-            <br>
-            Saturday and Sunday: 10:00 AM - 6:00 PM
-        </p>
+/* INFO BOX */
+.info-box {
+	background: #f1f3f5;
+	border-left: 5px solid #0d6efd;
+	padding: 15px;
+	border-radius: 8px;
+	margin-top: 20px;
+}
+</style>
+</head>
 
-        <h3>Contact Us</h3>
+<body>
 
-        <p>
-            Phone: 123-456-7890
-            <br>
-            Email: info@bookstore.com
-        </p>
-        </div>
-      </div>
-  </body>
+	<!-- 🔹 NAVBAR -->
+	<nav class="navbar navbar-expand-lg shadow-sm">
+		<div class="container">
+			<a class="navbar-brand text-primary" href="/">Book Store</a>
+
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link active text-primary"
+					href="aboutUs">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="contactUs">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="signup">Sign
+						Up</a></li>
+				<li class="nav-item"><a class="nav-link" href="signup">Admin</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- 🔹 ABOUT CONTENT -->
+	<div class="container my-5">
+		<div class="about-wrapper">
+
+			<h2 class="section-title">About Us</h2>
+			<div class="section-divider"></div>
+
+			<div class="row">
+				<!-- TEXT -->
+				<div class="col-md-6">
+					<p class="text-muted">At our bookstore, we are passionate about
+						books and reading. We believe in the power of literature to
+						inspire, educate, and entertain. Whether you are an avid reader or
+						just starting your journey, we have something for everyone.</p>
+
+					<p class="text-muted">Our mission is to provide affordable,
+						high-quality books to students, professionals, and book lovers
+						across all categories.</p>
+
+					<a href="/" class="btn btn-primary mt-3">Explore Books</a>
+				</div>
+
+				<!-- SKILLS -->
+				<div class="col-md-6">
+					<h5 class="fw-bold mb-3">Our Expertise</h5>
+
+					<label>Web Development</label>
+					<div class="progress mb-3">
+						<div class="progress-bar" style="width: 90%">90%</div>
+					</div>
+
+					<label>UI Design</label>
+					<div class="progress mb-3">
+						<div class="progress-bar" style="width: 70%">70%</div>
+					</div>
+
+					<label>UX Design</label>
+					<div class="progress mb-3">
+						<div class="progress-bar" style="width: 50%">50%</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- VISIT -->
+			<div class="info-box">
+				<h6 class="fw-bold">Visit Us</h6>
+				<p class="mb-0">
+					123 Book Street,<br> Cityville, State,<br> Country -
+					12345
+				</p>
+			</div>
+
+			<!-- HOURS -->
+			<div class="info-box">
+				<h6 class="fw-bold">Business Hours</h6>
+				<p class="mb-0">
+					Monday – Friday: 9:00 AM – 7:00 PM<br> Saturday – Sunday:
+					10:00 AM – 6:00 PM
+				</p>
+			</div>
+
+			<!-- CONTACT -->
+			<div class="info-box">
+				<h6 class="fw-bold">Contact Us</h6>
+				<p class="mb-0">
+					Phone: 123-456-7890<br> Email: info@bookstore.com
+				</p>
+			</div>
+
+		</div>
+	</div>
+
+</body>
 </html>

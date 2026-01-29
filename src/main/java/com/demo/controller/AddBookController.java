@@ -25,13 +25,14 @@ public class AddBookController {
 	}
 	
 	@PostMapping(value = "/addBook")
-	public ModelAndView addBook(ModelAndView m, String name, String description, double price, MultipartFile image) throws IOException {
+	public ModelAndView addBook(ModelAndView m, String name,String category, String description, double price, MultipartFile image) throws IOException {
 		System.out.println(name);
 		System.out.println(description);
 		System.out.println(price);
 		System.out.println(image.getOriginalFilename());
 		Book b = new Book();
 		b.setName(name);
+		b.setCategory(category);
 		b.setDescription(description);
 		b.setPrice(price);
 		b.setImage(image.getBytes());

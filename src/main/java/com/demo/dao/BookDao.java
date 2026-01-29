@@ -17,4 +17,15 @@ public interface BookDao extends JpaRepository<Book, Integer> {
 	@Query(value = "select image from Book where id=?1",nativeQuery = true)
 	byte[] findImageById(int id);
 	Book findById(int id);
+	
+	@Query(value =
+		    "SELECT id, name,description, image, price, category FROM book " +
+		    "WHERE CAST(id AS CHAR) LIKE %?1% " +
+		    "OR LOWER(name) LIKE LOWER(%?1%) " +
+		    "OR CAST(price AS CHAR) LIKE %?1% " +
+		    "OR LOWER(category) LIKE LOWER(%?1%)",
+		    nativeQuery = true)
+		List<Book> findByAny(String str);
+
+	List<Book> findByCategory(String category);
 }

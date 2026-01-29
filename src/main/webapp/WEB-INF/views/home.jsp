@@ -2,158 +2,172 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Store</title>
 
+<!-- Bootstrap -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
-
-<title>Online Book Store</title>
 
 <style>
 body {
-	background-color: #f2f2f2;
 	font-family: Arial, sans-serif;
+	background-color: #f8f9fa;
 }
 
-/* ---------------- NAVBAR ---------------- */
-.topnav {
-	background-color: #333;
-	padding: 0.5rem 1rem;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.topnav .nav-links a {
-	color: #f2f2f2;
-	text-decoration: none;
-	font-size: 17px;
-	padding: 10px 15px;
-	transition: 0.3s;
-}
-
-.topnav .nav-links a:hover {
-	background-color: #ddd;
-	color: black;
-	border-radius: 5px;
-}
-
-.topnav .nav-links a.active {
-	background-color: #04AA6D;
+/* HERO SECTION */
+.hero-section {
+	background: url("images/back1.png") no-repeat center;
+	background-size: cover;
+	padding: 100px 0;
 	color: white;
-	border-radius: 5px;
 }
 
-/* Right side buttons */
-.auth-buttons .btn {
-	font-size: 15px;
-	font-weight: 500;
-	margin-left: 10px;
-	transition: transform 0.2s, box-shadow 0.2s;
+.hero-section h1 {
+	font-weight: bold;
+	font-size: 42px;
 }
 
-.auth-buttons .btn:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.auth-buttons .btn-outline-light {
-	border: 1px solid #f2f2f2;
-	color: #f2f2f2;
-}
-
-.auth-buttons .btn-outline-light:hover {
-	background-color: #f2f2f2;
-	color: #333;
-}
-
-/* ---------------- CARD FIXES ---------------- */
-.card {
-	height: 100%;
-	border-radius: 10px;
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.card-img-top {
-	height: 200px;
+/* BOOK CARD */
+.book-card img {
+	height: 260px;
 	object-fit: cover;
 }
 
-.card-text {
-	font-size: 14px;
-	color: #555;
-	/* limit description lines */
-	overflow: hidden;
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
+.book-title {
+	font-weight: 600;
+}
+
+.price span {
+	color: green;
+	font-weight: bold;
+}
+
+.navbar .nav-link:hover {
+	color: #0d6efd;
+}
+
+.all-books-btn {
+	background-color: #0d6efd; /* Bootstrap primary blue */
+	color: #ffffff;
+	padding: 10px 28px;
+	font-size: 16px;
+	font-weight: 600;
+	border-radius: 10px; /* rounded corners like image */
+	text-decoration: none;
+	border: none;
+	display: inline-block;
+}
+
+.all-books-btn:hover {
+	background-color: #0b5ed7; /* slightly darker on hover */
+	color: #ffffff;
 }
 </style>
 </head>
 
 <body>
 
-	<!-- NAVBAR -->
-	<div class="topnav">
-		<!-- Left links -->
-		<div class="nav-links d-flex">
-			<a class="active" href="/">Home</a> <a href="aboutUs">About Us</a> <a
-				href="contactUs">Contact Us</a>
-		</div>
+	<!-- 🔹 NAVBAR -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+		<div class="container">
+			<a class="navbar-brand fw-bold text-primary" href="/">Book Store</a>
 
-		<!-- Right buttons -->
-		<div class="auth-buttons d-flex">
-			<a href="login" class="btn btn-outline-light">Login</a> <a
-				href="signup" class="btn btn-light">Sign Up</a>
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link active text-primary"
+					href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="aboutUs">About</a></li>
+				<li class="nav-item"><a class="nav-link" href="contactUs">Contact</a></li>
+				<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="signup">Sign
+						Up</a></li>
+				<li class="nav-item"><a class="nav-link" href="adminLogin">Admin</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- 🔹 HERO SECTION -->
+	<div class="hero-section">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<h6>Books by Popular Authors</h6>
+					<h1>
+						BUY THOUSANDS OF<br>BOOKS ONLINE
+					</h1>
+					<a href="#books" class="btn all-books-btn mt-3">Shop Now</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="container text-center mt-4">
-		<h1>Welcome to Our Website!</h1>
-	</div>
+	<!-- 🔹 PRODUCT OVERVIEW -->
+	<div class="container my-5" id="books">
+		<h4 class="fw-bold mb-4">PRODUCT OVERVIEW</h4>
 
-	<hr class="my-4">
+		<!-- Categories (UI only for now) -->
+		<ul class="nav nav-pills my-3">
+			<li class="nav-item"><a href="/" class="nav-link active">All Books</a></li>
+			<li class="nav-item"><a href="home?category=programming" class="nav-link">Programming</a></li>
+			<li class="nav-item"><a href="home?category=fiction" class="nav-link">Fiction</a></li>
+			<li class="nav-item"><a href="home?category=business" class="nav-link">Business</a></li>
+			<li class="nav-item"><a href="home?category=health" class="nav-link">Health</a></li>
+			<li class="nav-item"><a href="home?category=history" class="nav-link">History</a></li>
+			<li class="nav-item"><a href="home?category=economics" class="nav-link">Economics</a></li>
+			<li class="nav-item"><a href="home?category=science" class="nav-link">Science</a></li>
+			<li class="nav-item"><a href="home?category=finance" class="nav-link">Finance</a></li>
+			<li class="nav-item"><a href="home?category=politics" class="nav-link">Politics</a></li>
+		</ul>
 
-	<h1 class="text-center mb-4">Top Courses Books</h1>
-
-	<!-- BOOK LIST -->
-	<div class="container">
+		<!-- 🔹 BOOK GRID (JSTL) -->
 		<div class="row g-4">
+
 			<c:forEach var="b" items="${listOfBooks}">
 				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card h-100">
+					<div class="card book-card h-100 shadow-sm">
+
 						<!-- Image -->
 						<img src="showimage/${b.id}" class="card-img-top" alt="Book Image">
 
-						<div class="card-body d-flex flex-column">
-							<h5 class="card-title">${b.name}</h5>
+						<div class="card-body text-center d-flex flex-column">
+							<p class="book-title">${b.name}</p>
 
-							<p class="card-text">${b.description}</p>
+							<p class="text-muted small">${b.description}</p>
 
-							<p class="fw-bold mt-auto">Price : ₹${b.price}</p>
+							<p class="price mt-auto">
+								<span>₹${b.price}</span>
+							</p>
 
-							<a href="buyBook" class="btn btn-info w-100" target="_blank">
-								Buy Now </a>
+							<a href="buyBook?id=${b.id}"
+								class="btn btn-outline-primary btn-sm"> Buy Now </a>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
+
 		</div>
+
+		<!-- 🔹 PAGINATION (UI only) -->
+		<nav class="mt-4">
+			<ul class="pagination justify-content-center">
+				<li class="page-item"><a class="page-link">Previous</a></li>
+				<li class="page-item active"><a class="page-link">1</a></li>
+				<li class="page-item"><a class="page-link">2</a></li>
+				<li class="page-item"><a class="page-link">Next</a></li>
+			</ul>
+		</nav>
+
 	</div>
 
+	<!-- FOOTER -->
 	<div class="container text-center my-5">
-		<h4>
-			<b>Thank you for visiting. We hope you enjoy your stay.</b>
-		</h4>
+		<h5>
+			<b>Thank you for visiting. Happy Reading 📚</b>
+		</h5>
 	</div>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,20 +83,17 @@ body {
 
 	<div class="login-container">
 		<div class="login-card">
-			<h2>Login to Your Account</h2>
-			<form action="login" method="post">
+			<h2>Login as Admin</h2>
+			<form action="adminLogin" method="post">
 				<input type="text" class="form-control" name="username"
-					placeholder="Username or Email" required> <input
-					type="password" class="form-control" name="password"
-					placeholder="Password" required>
+					placeholder="Username" required> <input type="password"
+					class="form-control" name="password" placeholder="Password"
+					required>
 				<button type="submit" class="btn btn-primary">Login</button>
 			</form>
 			<c:if test="${not empty msg}">
-				<p align="center" style="color:red">${msg}</p>
+				<p align="center" style="color: red">${msg}</p>
 			</c:if>
-			<div class="text-center mt-3">
-				Don't have an account? <a href="signup">Sign Up here</a>
-			</div>
 			<div class="text-center mt-2">
 				<a href="/forgot-password">Forgot Password?</a>
 			</div>

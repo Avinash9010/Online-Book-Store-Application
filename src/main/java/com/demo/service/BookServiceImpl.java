@@ -36,4 +36,14 @@ public class BookServiceImpl implements BookService {
 	public Book findById(int id) {
 		return bd.findById(id);
 	}
+
+	@Override
+	public List<Book> findByAny(String str) {
+		return bd.findByAny(str);
+	}
+
+	@Override
+	public List<Book> findByCategory(String category) {
+		return bd.findByCategory(category);
+	}
 }

@@ -1,144 +1,153 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Contact Us</title>
+
+<!-- Bootstrap -->
 <link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-	crossorigin="anonymous">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 
-<title>Document</title>
 <style>
-* {
-	box-sizing: border-box;
+body {
+	background-color: #f8f9fa;
+	font-family: Arial, sans-serif;
 }
 
-input[type=text], select, textarea {
-	width: 100%;
-	padding: 12px;
-	border: 1px solid #ccc;
-	margin-top: 6px;
-	margin-bottom: 16px;
-	resize: vertical;
+/* NAVBAR */
+.navbar {
+	background-color: #fff;
 }
 
-input[type=submit] {
-	background-color: #04AA6D;
-	color: white;
-	padding: 12px 20px;
-	border: none;
-	cursor: pointer;
+.navbar-brand {
+	font-weight: bold;
 }
 
-input[type=submit]:hover {
-	background-color: #45a049;
+.nav-link {
+	color: #555;
+	font-weight: 500;
 }
 
-.container {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 15px;
+.nav-link:hover {
+	color: #0d6efd;
 }
 
-.column {
-	float: center;
-	width: 50%;
-	margin-top: 8px;
-	padding: 20px;
+/* CONTACT CARD */
+.contact-card {
+	background: #fff;
+	padding: 40px;
+	border-radius: 15px;
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
+/* FORM */
+.form-control, .form-select {
+	border-radius: 10px;
 }
 
-@media screen and (max-width: 600px) {
-	.column, input[type=submit] {
-		width: 100%;
-		margin-top: 3;
-	}
+textarea {
+	resize: none;
 }
 
-.btn-text-left {
-	text-align: left;
-	padding-top: 15px;
-	padding-left: 10px;
+/* TITLE */
+.section-title {
+	font-weight: bold;
 }
 
-.topnav {
-	background-color: #333;
-	overflow: hidden;
-}
-
-.topnav a {
-	float: left;
-	color: #f2f2f2;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
-}
-
-.topnav a:hover {
-	background-color: #ddd;
-	color: black;
-}
-
-.topnav a.active {
-	background-color: #04AA6D;
-	color: white;
+.section-divider {
+	width: 80px;
+	height: 4px;
+	background: #0d6efd;
+	margin: 10px auto 25px;
 }
 </style>
 </head>
+
 <body>
-	<div class="topnav">
-		<a class="active" href="/">Home</a> <a href="aboutUs">About Us</a> <a
-			href="contactUs">Contact Us</a>
 
-	</div>
+	<!-- 🔹 NAVBAR -->
+	<nav class="navbar navbar-expand-lg shadow-sm">
+		<div class="container">
+			<a class="navbar-brand text-primary" href="/">Book Store</a>
 
-
-	<div class="container">
-		<div style="text-align: center">
-			<h2>Contact Us</h2>
-			<p>Swing by for a cup of coffee, or leave us a message:</p>
-			<c:if test="${not empty msg}">
-				<p>${msg}</p>
-			</c:if>
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="aboutUs">About
+						Us</a></li>
+				<li class="nav-item"><a class="nav-link active text-primary"
+					href="contactUs">Contact Us</a></li>
+				<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+				<li class="nav-item"><a class="nav-link" href="signup">Sign
+						Up</a></li>
+				<li class="nav-item"><a class="nav-link" href="signup">Admin</a></li>
+			</ul>
 		</div>
-		<div class="row">
-			<div class="column">
-				<form action="contactUs" method="post">
-					<label for="fname">First Name</label> <input type="text" id="fname"
-						name="firstname" placeholder="Your name.."> <label
-						for="lname">Last Name</label> <input type="text" id="lname"
-						name="lastname" placeholder="Your last name.."> <label
-						for="country">Country</label> <select id="country" name="country">
-						<option value="India">India</option>
-						<option value="australia">Australia</option>
-						<option value="canada">Canada</option>
-						<option value="usa">USA</option>
-					</select> <label for="subject">Subject</label>
-					<textarea id="subject" name="subject"
-						placeholder="Write something.." style="height: 170px"></textarea>
-					<div class="btn-text-left">
-						<input type="submit" class="btn btn-primary">
-					</div>
-				</form>
+	</nav>
+
+	<!-- 🔹 CONTACT FORM -->
+	<div class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+				<div class="contact-card">
+
+					<h2 class="text-center section-title">Contact Us</h2>
+					<div class="section-divider"></div>
+
+					<p class="text-center text-muted">Swing by for a cup of coffee,
+						or leave us a message</p>
+
+					<!-- JSTL MESSAGE (UNCHANGED) -->
+					<c:if test="${not empty msg}">
+						<p class="text-center text-success fw-bold">${msg}</p>
+					</c:if>
+
+					<form action="contactUs" method="post">
+
+						<div class="mb-3">
+							<label class="form-label">First Name</label> <input type="text"
+								class="form-control" name="firstname" placeholder="Your name..">
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Last Name</label> <input type="text"
+								class="form-control" name="lastname"
+								placeholder="Your last name..">
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label">Country</label> <select
+								class="form-select" name="country">
+								<option value="India">India</option>
+								<option value="Australia">Australia</option>
+								<option value="Canada">Canada</option>
+								<option value="USA">USA</option>
+							</select>
+						</div>
+
+						<div class="mb-4">
+							<label class="form-label">Subject</label>
+							<textarea class="form-control" name="subject" rows="5"
+								placeholder="Write something.."></textarea>
+						</div>
+
+						<div class="d-grid">
+							<button type="submit" class="btn btn-primary btn-lg">
+								Send Message</button>
+						</div>
+
+					</form>
+
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-		crossorigin="anonymous"></script>
 </body>
 </html>

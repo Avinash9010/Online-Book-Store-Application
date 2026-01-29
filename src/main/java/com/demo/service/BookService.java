@@ -10,4 +10,6 @@ public interface BookService {
 	List<Book> findAll();
 	byte[] findImageById(int id);
 	Book findById(int id);
+	List<Book> findByAny(String str);
+	List<Book> findByCategory(String category);
 }

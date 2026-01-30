@@ -9,4 +9,5 @@ import com.demo.model.User;
 public interface UserDao extends JpaRepository<User, Integer>{
 	User save(User u);
 	User findByUsernameAndPassword(String username,String password);
+	User findById(int id);
 }

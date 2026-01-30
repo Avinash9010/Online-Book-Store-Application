@@ -70,25 +70,7 @@ body {
 </head>
 
 <body>
-
-	<!-- 🔹 NAVBAR -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-		<div class="container">
-			<a class="navbar-brand fw-bold text-primary" href="/">Book Store</a>
-
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item"><a class="nav-link active text-primary"
-					href="/">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="aboutUs">About</a></li>
-				<li class="nav-item"><a class="nav-link" href="contactUs">Contact</a></li>
-				<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="signup">Sign
-						Up</a></li>
-				<li class="nav-item"><a class="nav-link" href="adminLogin">Admin</a></li>
-			</ul>
-		</div>
-	</nav>
-
+	<%@ include file="header.jsp" %>
 	<!-- 🔹 HERO SECTION -->
 	<div class="hero-section">
 		<div class="container">

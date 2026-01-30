@@ -48,11 +48,11 @@ public class AuthController {
         }
 
         HttpSession session = req.getSession();
-        session.setAttribute("uid", u.getId());
+        session.setAttribute("user", u);
 
         List<Book> list = bs.findAll();
         m.addObject("listOfBooks", list);
-        m.setViewName("index");
+        m.setViewName("userHome");
         
         System.out.println(u);
 

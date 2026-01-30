@@ -84,7 +84,8 @@ body {
     <div class="signup-card">
         <h2>Create Your Account</h2>
         <form action="signup" method="post">
-            <input type="text" class="form-control" name="name" placeholder="Full Name" required>
+            <input type="text" class="form-control" name="firstname" placeholder="First Name" required>
+            <input type="text" class="form-control" name="lastname" placeholder="Last Name" required>
             <input type="text" class="form-control" name="number" placeholder="Number" required>
             <input type="email" class="form-control" name="email" placeholder="Email Address" required>
             <input type="text" class="form-control" name="username" placeholder="Username" required>

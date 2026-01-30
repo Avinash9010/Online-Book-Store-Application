@@ -40,11 +40,11 @@ public class BookController {
 	}
 	
 	
-	@GetMapping(value = "/buyBook")
-	public ModelAndView buyBook(ModelAndView m) {
-		m.setViewName("buyBook");
-		return m;
-	}
+//	@GetMapping(value = "/buyBook")
+//	public ModelAndView buyBook(ModelAndView m) {
+//		m.setViewName("buyBook");
+//		return m;
+//	}
 	
 	@GetMapping(value = "/showimage/{id}")
 	public void showImage(@PathVariable int id, HttpServletResponse res) throws IOException {

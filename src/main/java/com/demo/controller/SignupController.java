@@ -23,7 +23,8 @@ public class SignupController {
     @PostMapping("/signup")
     public ModelAndView signupRequest(
             ModelAndView m,
-            String name,
+            String firstname,
+            String lastname,
             String number,
             String username,
             String email,
@@ -37,7 +38,8 @@ public class SignupController {
         }
 
         User u = new User();
-        u.setName(name);
+        u.setFirstname(firstname);
+        u.setLastname(lastname);
         u.setNumber(number);
         u.setUsername(username);
         u.setEmail(email);

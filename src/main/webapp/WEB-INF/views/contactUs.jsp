@@ -72,24 +72,7 @@ textarea {
 
 <body>
 
-	<!-- 🔹 NAVBAR -->
-	<nav class="navbar navbar-expand-lg shadow-sm">
-		<div class="container">
-			<a class="navbar-brand text-primary" href="/">Book Store</a>
-
-			<ul class="navbar-nav ms-auto">
-				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="aboutUs">About
-						Us</a></li>
-				<li class="nav-item"><a class="nav-link active text-primary"
-					href="contactUs">Contact Us</a></li>
-				<li class="nav-item"><a class="nav-link" href="login">Login</a></li>
-				<li class="nav-item"><a class="nav-link" href="signup">Sign
-						Up</a></li>
-				<li class="nav-item"><a class="nav-link" href="signup">Admin</a></li>
-			</ul>
-		</div>
-	</nav>
+	<%@ include file="header.jsp" %>
 
 	<!-- 🔹 CONTACT FORM -->
 	<div class="container my-5">

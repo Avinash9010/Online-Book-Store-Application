@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
 <!DOCTYPE html>
@@ -7,149 +7,137 @@
 <head>
 <title>Book Store</title>
 
-<!-- Bootstrap -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
 <style>
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f8f9fa;
+    background: #f4f6f9;
 }
 
-/* HERO SECTION */
-.hero-section {
-	background: url("images/back1.png") no-repeat center;
-	background-size: cover;
-	padding: 100px 0;
-	color: white;
+/* HERO */
+.hero {
+    background: linear-gradient(120deg, #0d6efd, #6610f2);
+    color: white;
+    padding: 80px 0;
+    border-radius: 0 0 40px 40px;
+}
+.hero h1 {
+    font-weight: 800;
+}
+.hero p {
+    opacity: 0.9;
 }
 
-.hero-section h1 {
-	font-weight: bold;
-	font-size: 42px;
+/* CATEGORY CHIPS */
+.category-chip a {
+    border-radius: 30px;
+    padding: 6px 16px;
+    background: #fff;
+    color: #333;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.category-chip a:hover {
+    background: #0d6efd;
+    color: white;
 }
 
 /* BOOK CARD */
+.book-card {
+    border: none;
+    border-radius: 15px;
+    transition: 0.3s;
+}
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 .book-card img {
-	height: 260px;
-	object-fit: cover;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 15px 15px 0 0;
 }
-
-.book-title {
-	font-weight: 600;
-}
-
-.price span {
-	color: green;
-	font-weight: bold;
-}
-
-.navbar .nav-link:hover {
-	color: #0d6efd;
-}
-
-.all-books-btn {
-	background-color: #0d6efd; /* Bootstrap primary blue */
-	color: #ffffff;
-	padding: 10px 28px;
-	font-size: 16px;
-	font-weight: 600;
-	border-radius: 10px; /* rounded corners like image */
-	text-decoration: none;
-	border: none;
-	display: inline-block;
-}
-
-.all-books-btn:hover {
-	background-color: #0b5ed7; /* slightly darker on hover */
-	color: #ffffff;
+.price {
+    color: #198754;
+    font-weight: bold;
+    font-size: 18px;
 }
 </style>
 </head>
 
 <body>
-	<%@ include file="header.jsp" %>
-	<!-- 🔹 HERO SECTION -->
-	<div class="hero-section">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-6">
-					<h6>Books by Popular Authors</h6>
-					<h1>
-						BUY THOUSANDS OF<br>BOOKS ONLINE
-					</h1>
-					<a href="#books" class="btn all-books-btn mt-3">Shop Now</a>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<!-- 🔹 PRODUCT OVERVIEW -->
-	<div class="container my-5" id="books">
-		<h4 class="fw-bold mb-4">PRODUCT OVERVIEW</h4>
+<%@ include file="header.jsp" %>
 
-		<!-- Categories (UI only for now) -->
-		<ul class="nav nav-pills my-3">
-			<li class="nav-item"><a href="/" class="nav-link active">All Books</a></li>
-			<li class="nav-item"><a href="home?category=programming" class="nav-link">Programming</a></li>
-			<li class="nav-item"><a href="home?category=fiction" class="nav-link">Fiction</a></li>
-			<li class="nav-item"><a href="home?category=business" class="nav-link">Business</a></li>
-			<li class="nav-item"><a href="home?category=health" class="nav-link">Health</a></li>
-			<li class="nav-item"><a href="home?category=history" class="nav-link">History</a></li>
-			<li class="nav-item"><a href="home?category=economics" class="nav-link">Economics</a></li>
-			<li class="nav-item"><a href="home?category=science" class="nav-link">Science</a></li>
-			<li class="nav-item"><a href="home?category=finance" class="nav-link">Finance</a></li>
-			<li class="nav-item"><a href="home?category=politics" class="nav-link">Politics</a></li>
-		</ul>
+<!-- 🔹 HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1>Discover Your Next Favorite Book</h1>
+                <p class="mt-3">
+                    Explore thousands of books across categories curated just for you.
+                </p>
+                <a href="#books" class="btn btn-light btn-lg mt-3 fw-bold">
+                    Explore Books 📚
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
-		<!-- 🔹 BOOK GRID (JSTL) -->
-		<div class="row g-4">
+<!-- 🔹 CONTENT -->
+<div class="container my-5" id="books">
 
-			<c:forEach var="b" items="${listOfBooks}">
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card book-card h-100 shadow-sm">
+    <!-- 🔹 CATEGORY CHIPS -->
+    <div class="d-flex flex-wrap gap-2 mb-4 category-chip">
+        <a href="/" class="text-decoration-none">All</a>
+        <a href="home?category=programming" class="text-decoration-none">Programming</a>
+        <a href="home?category=fiction" class="text-decoration-none">Fiction</a>
+        <a href="home?category=business" class="text-decoration-none">Business</a>
+        <a href="home?category=science" class="text-decoration-none">Science</a>
+        <a href="home?category=finance" class="text-decoration-none">Finance</a>
+    </div>
 
-						<!-- Image -->
-						<img src="showimage/${b.id}" class="card-img-top" alt="Book Image">
+    <!-- 🔹 BOOK GRID -->
+    <div class="row g-4">
 
-						<div class="card-body text-center d-flex flex-column">
-							<p class="book-title">${b.name}</p>
+        <c:forEach var="b" items="${listOfBooks}">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card book-card h-100">
 
-							<p class="text-muted small">${b.description}</p>
+                    <img src="showimage/${b.id}" class="card-img-top">
 
-							<p class="price mt-auto">
-								<span>₹${b.price}</span>
-							</p>
+                    <div class="card-body d-flex flex-column">
+                        <h6 class="fw-bold">${b.name}</h6>
+                        <p class="text-muted small">
+                            ${b.description}
+                        </p>
 
-							<a href="buyBook?id=${b.id}"
-								class="btn btn-outline-primary btn-sm"> Buy Now </a>
-						</div>
-					</div>
-				</div>
-			</c:forEach>
+                        <div class="mt-auto">
+                            <div class="price mb-2">₹${b.price}</div>
+                            <a href="buyBook?id=${b.id}"
+                               class="btn btn-outline-primary btn-sm w-100">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
 
-		</div>
+                </div>
+            </div>
+        </c:forEach>
 
-		<!-- 🔹 PAGINATION (UI only) -->
-		<nav class="mt-4">
-			<ul class="pagination justify-content-center">
-				<li class="page-item"><a class="page-link">Previous</a></li>
-				<li class="page-item active"><a class="page-link">1</a></li>
-				<li class="page-item"><a class="page-link">2</a></li>
-				<li class="page-item"><a class="page-link">Next</a></li>
-			</ul>
-		</nav>
+    </div>
 
-	</div>
+</div>
 
-	<!-- FOOTER -->
-	<div class="container text-center my-5">
-		<h5>
-			<b>Thank you for visiting. Happy Reading 📚</b>
-		</h5>
-	</div>
+<!-- 🔹 FOOTER -->
+<div class="text-center py-4 bg-white mt-5">
+    <small class="text-muted">
+        © 2026 Online Book Store • Happy Reading 📖
+    </small>
+</div>
 
 </body>
 </html>

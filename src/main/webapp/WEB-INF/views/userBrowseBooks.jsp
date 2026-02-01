@@ -2,65 +2,144 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core"%>
 
-<!-- 🔹 Categories -->
-<ul class="nav nav-pills mb-4">
-    <li class="nav-item">
-        <a href="user?page=books&category=all" class="nav-link active">All</a>
-    </li>
-    <li class="nav-item">
-        <a href="user?page=books&category=programming" class="nav-link">Programming</a>
-    </li>
-    <li class="nav-item">
-        <a href="user?page=books&category=fiction" class="nav-link">Fiction</a>
-    </li>
-    <li class="nav-item">
-        <a href="user?page=books&category=business" class="nav-link">Business</a>
-    </li>
-    <li class="nav-item">
-        <a href="user?page=books&category=science" class="nav-link">Science</a>
-    </li>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Browse Books</title>
 
-<!-- 🔹 HORIZONTAL BOOK LIST -->
-<c:forEach var="b" items="${listOfBooks}">
-    <div class="card mb-3 shadow-sm">
-        <div class="row g-0 align-items-center">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet">
 
-            <!-- Image -->
-            <div class="col-md-2 text-center">
-                <img src="showimage/${b.id}"
-                     class="img-fluid rounded-start"
-                     style="height:140px; object-fit:cover;"
-                     alt="Book Image">
-            </div>
+<style>
+/* 🔹 Sticky category bar FIX */
+.category-wrapper {
+    position: sticky;
+    top: 70px; /* below navbar */
+    z-index: 100;
+}
 
-            <!-- Book Info -->
-            <div class="col-md-6">
-                <div class="card-body">
-                    <h5 class="card-title">${b.name}</h5>
-                    <p class="card-text text-muted">${b.description}</p>
-                </div>
-            </div>
+/* transparent + glass effect */
+.category-bar {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
 
-            <!-- Price & Actions -->
-            <div class="col-md-4 text-center">
-                <div class="card-body">
-                    <h5 class="text-success mb-3">₹${b.price}</h5>
+/* spacing so content never hides behind bar */
+.books-section {
+    padding-top: 20px;
+}
 
-                    <!-- Buy Now -->
-                    <a href="buyBook?book_id=${b.id}&user_id=${user.id}"
-                       class="btn btn-sm btn-primary mb-2 w-75">
-                        Buy Now
+/* Book cards */
+.book-card img {
+    height: 140px;
+    object-fit: cover;
+}
+
+.book-card {
+    transition: 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container my-4">
+
+    <h4 class="fw-bold mb-3">📚 Browse Books</h4>
+
+    <!-- 🔹 CATEGORY BAR -->
+    <div class="category-wrapper">
+        <div class="category-bar">
+            <ul class="nav nav-pills gap-2">
+                <li class="nav-item">
+                    <a href="user?page=books&category=all"
+                       class="nav-link ${empty param.category || param.category=='all' ? 'active' : ''}">
+                        All
                     </a>
-
-                    <!-- Add to Cart -->
-                    <a href="addToCart?book_id=${b.id}&user_id=${user.id}&category=${b.category}"
-                       class="btn btn-sm btn-outline-success w-75">
-                        🛒 Add to Cart
+                </li>
+                <li class="nav-item">
+                    <a href="user?page=books&category=programming"
+                       class="nav-link ${param.category=='programming' ? 'active' : ''}">
+                        Programming
                     </a>
-                </div>
-            </div>
-
+                </li>
+                <li class="nav-item">
+                    <a href="user?page=books&category=fiction"
+                       class="nav-link ${param.category=='fiction' ? 'active' : ''}">
+                        Fiction
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="user?page=books&category=business"
+                       class="nav-link ${param.category=='business' ? 'active' : ''}">
+                        Business
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="user?page=books&category=science"
+                       class="nav-link ${param.category=='science' ? 'active' : ''}">
+                        Science
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
-</c:forEach>
+
+    <!-- 🔹 BOOK LIST -->
+    <div class="books-section">
+
+        <c:forEach var="b" items="${listOfBooks}">
+            <div class="card mb-3 shadow-sm book-card">
+                <div class="row g-0 align-items-center">
+
+                    <div class="col-md-2 text-center">
+                        <img src="showimage/${b.id}" class="img-fluid rounded-start">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <h5>${b.name}</h5>
+                            <p class="text-muted small">${b.description}</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 text-center">
+                        <div class="card-body">
+                            <h5 class="text-success mb-3">₹${b.price}</h5>
+
+                            <a href="buyBook?book_id=${b.id}&user_id=${user.id}"
+                               class="btn btn-primary btn-sm w-75 mb-2">
+                                Buy Now
+                            </a>
+
+                            <a href="addToCart?book_id=${b.id}&user_id=${user.id}&category=${b.category}"
+                               class="btn btn-outline-success btn-sm w-75">
+                                🛒 Add to Cart
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </c:forEach>
+
+        <c:if test="${empty listOfBooks}">
+            <div class="alert alert-warning text-center">
+                No books found 😔
+            </div>
+        </c:if>
+
+    </div>
+
+</div>
+
+</body>
+</html>

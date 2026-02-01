@@ -39,8 +39,8 @@ public class BuyController {
 		List<Cart> cartList = new ArrayList<Cart>();
 		cartList.add(c);
 		m.addObject("cartList", cartList);
-		m.setViewName("checkout");
 		m.addObject("user",u);
+		m.setViewName("checkout");
 		return m;
 	}
 }

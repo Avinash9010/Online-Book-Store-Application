@@ -10,4 +10,5 @@ public interface CartService {
 	List<Cart> findByUser(User user);
 	Cart findById(int id);
 	int deleteById(int id);
+	int deleteByUserId(int user_id);
 }

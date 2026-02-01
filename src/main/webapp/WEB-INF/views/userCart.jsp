@@ -8,105 +8,134 @@
 <meta charset="UTF-8">
 <title>My Cart</title>
 
-<!-- Bootstrap -->
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+<style>
+body {
+    background: #f4f6f9;
+}
+
+/* CART CARD */
+.cart-card {
+    border-radius: 18px;
+    border: none;
+}
+
+/* BOOK IMAGE */
+.cart-img {
+    height: 90px;
+    border-radius: 10px;
+}
+
+/* QTY BUTTON */
+.qty-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+
+/* TOTAL BOX */
+.total-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+</style>
 
 </head>
 <body>
 
 <div class="container my-5">
 
-    <h3 class="mb-4">🛒 My Cart</h3>
+    <h3 class="fw-bold mb-4">🛒 My Cart</h3>
 
-    <!-- 🔴 Empty Cart -->
+    <!-- 🔴 EMPTY CART -->
     <c:if test="${empty cartList}">
-        <div class="alert alert-warning text-center">
-            Your cart is empty 😔 <br>
-            <a href="user?page=books" class="btn btn-primary mt-3">
+        <div class="card text-center p-5 shadow-sm">
+            <h4 class="mb-3">Your cart is empty 😔</h4>
+            <p class="text-muted">
+                Looks like you haven't added anything yet
+            </p>
+            <a href="user?page=books" class="btn btn-primary px-4 mt-3">
                 Browse Books
             </a>
         </div>
     </c:if>
 
-    <!-- 🟢 Cart Items -->
+    <!-- 🟢 CART ITEMS -->
     <c:if test="${not empty cartList}">
 
-        <table class="table table-bordered align-middle text-center">
-            <thead class="table-dark">
-                <tr>
-                    <th>Image</th>
-                    <th>Book Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th>Remove</th>
-                </tr>
-            </thead>
+        <div class="card cart-card shadow-sm p-4 mb-4">
 
-            <tbody>
-                <c:set var="total" value="0" />
+            <c:set var="total" value="0" />
 
-                <c:forEach var="c" items="${cartList}">
-                    <tr>
+            <c:forEach var="c" items="${cartList}">
+                <div class="row align-items-center border-bottom py-3">
 
-                        <!-- Image -->
-                        <td>
-                            <img src="showimage/${c.book.id}"
-                                 style="height:80px;">
-                        </td>
+                    <!-- IMAGE -->
+                    <div class="col-md-2 text-center">
+                        <img src="showimage/${c.book.id}" class="cart-img">
+                    </div>
 
-                        <!-- Name -->
-                        <td>${c.book.name}</td>
+                    <!-- BOOK INFO -->
+                    <div class="col-md-3">
+                        <h6 class="fw-bold mb-1">${c.book.name}</h6>
+                        <small class="text-muted">Price: ₹${c.book.price}</small>
+                    </div>
 
-                        <!-- Price -->
-                        <td>₹${c.book.price}</td>
+                    <!-- QUANTITY -->
+                    <div class="col-md-3 text-center">
+                        <div class="d-inline-flex align-items-center gap-2">
 
-                        <!-- Quantity -->
-                        <td>
-                            <div class="d-flex justify-content-center align-items-center gap-2">
+                            <a href="decreaseQty?cart_id=${c.id}&user_id=${c.user.id}"
+                               class="btn btn-outline-danger qty-btn">−</a>
 
-                                <a href="decreaseQty?cart_id=${c.id}&user_id=${c.user.id}"
-                                   class="btn btn-sm btn-outline-danger">➖</a>
+                            <span class="fw-bold">${c.quantity}</span>
 
-                                <span class="fw-bold">${c.quantity}</span>
+                            <a href="increaseQty?cart_id=${c.id}&user_id=${c.user.id}"
+                               class="btn btn-outline-success qty-btn">+</a>
 
-                                <a href="increaseQty?cart_id=${c.id}&user_id=${c.user.id}"
-                                   class="btn btn-sm btn-outline-success">➕</a>
+                        </div>
+                    </div>
 
-                            </div>
-                        </td>
+                    <!-- SUBTOTAL -->
+                    <div class="col-md-2 text-center fw-bold text-success">
+                        ₹${c.book.price * c.quantity}
+                        <c:set var="total"
+                               value="${total + (c.book.price * c.quantity)}" />
+                    </div>
 
-                        <!-- Subtotal -->
-                        <td>
-                            ₹${c.book.price * c.quantity}
-                            <c:set var="total"
-                                value="${total + (c.book.price * c.quantity)}" />
-                        </td>
+                    <!-- REMOVE -->
+                    <div class="col-md-2 text-center">
+                        <a href="removeFromCart?cart_id=${c.id}&user_id=${c.user.id}"
+                           class="btn btn-outline-danger btn-sm">
+                            ❌ Remove
+                        </a>
+                    </div>
 
-                        <!-- Remove -->
-                        <td>
-                            <a href="removeFromCart?cart_id=${c.id}&user_id=${c.user.id}"
-                               class="btn btn-sm btn-danger">
-                                ❌
-                            </a>
-                        </td>
+                </div>
+            </c:forEach>
+        </div>
 
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <!-- 🧾 TOTAL SECTION -->
+        <div class="row justify-content-end">
+            <div class="col-md-4">
+                <div class="total-box">
+                    <h5 class="fw-bold mb-3">Order Summary</h5>
 
-        <!-- 🧾 Total -->
-        <div class="text-end mt-4">
-            <h4>Total Amount: 
-                <span class="text-success">₹${total}</span>
-            </h4>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Total Amount</span>
+                        <span class="fw-bold text-success">₹${total}</span>
+                    </div>
 
-            <a href="checkout?user_id=${user.id}" class="btn btn-lg btn-success mt-3">
-                Proceed to Checkout
-            </a>
+                    <a href="checkout?user_id=${user.id}"
+                       class="btn btn-success w-100 mt-3 btn-lg">
+                        Proceed to Checkout
+                    </a>
+                </div>
+            </div>
         </div>
 
     </c:if>

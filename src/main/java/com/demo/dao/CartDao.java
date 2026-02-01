@@ -19,4 +19,8 @@ public interface CartDao extends JpaRepository<Cart, Integer> {
 	@Query(value = "delete from Cart where id=?1", nativeQuery = true)
 	@Modifying
 	int deleteById(int id);
+	
+	@Query(value = "delete from Cart where user_id=?1", nativeQuery = true)
+	@Modifying
+	int deleteByUserId(int user_id);
 }

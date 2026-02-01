@@ -13,8 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.demo.model.Admin;
 import com.demo.model.Book;
+import com.demo.model.BookOrder;
 import com.demo.service.AdminService;
 import com.demo.service.BookService;
+import com.demo.service.OrderService;
 
 @Controller
 public class AdminController {
@@ -24,6 +26,9 @@ public class AdminController {
 	
 	@Autowired
 	private BookService bs;
+	
+	@Autowired
+	private OrderService os;
 	
 	@GetMapping(value = "/adminLogin")
 	public ModelAndView login(ModelAndView m) {
@@ -68,25 +73,15 @@ public class AdminController {
 	            m.addObject("listOfBooks", bs.findAll());
 	        }
 	    }
+	    
+	    if("adminOrders".equals(page)) {
+	    	System.out.println("in orders");
+	    	List<BookOrder> orders = os.findAll();
+	    	for(BookOrder bo:orders) System.out.println(bo);
+	    	m.addObject("orders", orders);
+	    }
 
 	    m.addObject("page", page);
 	    return m;
 	}
-
-	
-//	@GetMapping("/admin")
-//	public ModelAndView admin(
-//	        @RequestParam(required = false, defaultValue = "home") String page) {
-//
-//	    ModelAndView m = new ModelAndView("adminMain");
-//	    System.out.println(page);
-//	    if ("adminListBooks".equals(page)) {
-//	    	List<Book> list = bs.findAll();
-//	    	for(Book b:list) System.out.println(b);
-//	        m.addObject("listOfBooks", list);
-//	    }
-//
-//	    m.addObject("page", page);
-//	    return m;
-//	}
 }

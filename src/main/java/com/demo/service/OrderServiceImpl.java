@@ -35,4 +35,9 @@ public class OrderServiceImpl implements OrderService {
 	public BookOrder findById(int id) {
 		return od.findById(id);
 	}
+
+	@Override
+	public List<BookOrder> findByUserIdOrderByIdDesc(int user_id) {
+		return od.findByUserIdOrderByIdDesc(user_id);
+	}
 }

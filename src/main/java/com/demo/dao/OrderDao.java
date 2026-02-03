@@ -13,6 +13,7 @@ public interface OrderDao extends JpaRepository<BookOrder, Integer> {
 	
 	BookOrder save(BookOrder bo);
 	List<BookOrder> findByUserId(int user_id);
+	List<BookOrder> findByUserIdOrderByIdDesc(int user_id);
 	List<BookOrder> findAll();
 	BookOrder findById(int id);
 }

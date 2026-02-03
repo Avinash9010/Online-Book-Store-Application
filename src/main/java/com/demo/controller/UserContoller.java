@@ -1,5 +1,6 @@
 package com.demo.controller;
 
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -76,7 +77,7 @@ public class UserContoller {
 	    
 	    if("orders".equals(page)) {
 	    	System.out.println("in orders");
-	    	List<BookOrder> orders = os.findByUserId(user_id);
+	    	List<BookOrder> orders = os.findByUserIdOrderByIdDesc(user_id);
 	    	m.addObject("orders", orders);
 	    	for(BookOrder bo : orders) System.out.println(bo);
 	    	System.out.println(orders.size());
@@ -85,6 +86,4 @@ public class UserContoller {
 
 	    return m;
 	}
-
-
 }

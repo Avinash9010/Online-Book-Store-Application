@@ -8,9 +8,24 @@
 <meta charset="UTF-8">
 <title>Admin Orders</title>
 
+<!-- Bootstrap CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<style>
+body {
+	background-color: #f8f9fa;
+}
+
+.order-card img {
+	border: 1px solid #ddd;
+}
+
+.dropdown-toggle {
+	text-transform: capitalize;
+}
+</style>
 </head>
 
 <body>
@@ -19,9 +34,10 @@
 
 		<h4 class="fw-bold mb-4">📦 All Orders</h4>
 
+		<!-- ORDERS LOOP -->
 		<c:forEach var="order" items="${orders}">
 
-			<div class="card mb-4 shadow-sm">
+			<div class="card mb-4 shadow-sm order-card">
 				<div class="card-body">
 
 					<!-- HEADER -->
@@ -43,7 +59,7 @@
 									style="width: 70px; height: 55px; object-fit: cover;">
 								<div>
 									<div class="fw-semibold">${entry.key.name}</div>
-									<small class="text-muted"> qty: ${entry.value} </small>
+									<small class="text-muted">Qty: ${entry.value}</small>
 								</div>
 							</div>
 						</c:forEach>
@@ -56,33 +72,41 @@
 							${order.address.city} - ${order.address.zipcode} </small>
 					</div>
 
-					<!-- STATUS -->
-					<div class="mt-2">
+					<!-- STATUS DROPDOWN -->
+					<div>
 						<small class="fw-semibold d-block mb-2">Order Status</small>
 
-						<div class="btn-group" role="group">
+						<div class="dropdown">
+							<button
+								class="btn btn-sm dropdown-toggle
+								${order.status == 'pending' ? 'btn-warning' :
+								  order.status == 'out for delivery' ? 'btn-primary' :
+								  'btn-success'}"
+								type="button" data-bs-toggle="dropdown" aria-expanded="false">
 
-							<!-- PENDING -->
-							<button type="button"
-								class="btn btn-sm 
-            ${order.status == 'pending' ? 'btn-warning' : 'btn-outline-warning'}">
-								<a href="updateStatus?status=pending&order_id=${order.id}">pending</a></button>
+								${order.status}</button>
 
-							<!-- OUT FOR DELIVERY -->
-							<button type="button"
-								class="btn btn-sm 
-            ${order.status == 'outfordelivery' ? 'btn-primary' : 'btn-outline-primary'}">
-								<a href="updateStatus?status=out for delivery&order_id=${order.id}">out for delivery</a></button>
+							<c:if test="${order.status == 'pending'}">
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item"
+										href="updateStatus?status=out for delivery&order_id=${order.id}">
+											🚚 Out for delivery </a></li>
 
-							<!-- DELIVERED -->
-							<button type="button"
-								class="btn btn-sm 
-            ${order.status == 'delivered' ? 'btn-success' : 'btn-outline-success'}">
-								<a href="updateStatus?status=delivered&order_id=${order.id}">delivered</a></button>
+									<li><a class="dropdown-item text-success"
+										href="updateStatus?status=delivered&order_id=${order.id}">
+											✅ Delivered </a></li>
+								</ul>
+							</c:if>
 
+							<c:if test="${order.status == 'out for delivery'}">
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item text-success"
+										href="updateStatus?status=delivered&order_id=${order.id}">
+											✅ Delivered </a></li>
+								</ul>
+							</c:if>
 						</div>
 					</div>
-
 
 				</div>
 			</div>
@@ -95,6 +119,10 @@
 		</c:if>
 
 	</div>
+
+	<!-- Bootstrap JS -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -12,7 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.demo.model.Book;
 import com.demo.service.BookService;
 
+import jakarta.servlet.annotation.MultipartConfig;
+
 @Controller
+@MultipartConfig(maxFileSize = 999999999,maxRequestSize = 999999999)
 public class UpdateBookController {
 	
 	@Autowired
@@ -24,16 +27,21 @@ public class UpdateBookController {
 		return m;
 	}
 	
-	@PostMapping("/updateBook/req")
+	@PostMapping("/updateBook")
 	public ModelAndView updateBook(ModelAndView m,int id,String name,String category, String description,Double price,
 	        MultipartFile image) throws IOException {
-		System.out.println(description);
+		System.out.println("id: "+id);
+		System.out.println("name: "+name);
+		System.out.println("description: "+description);
+		System.out.println("category: "+category);
+		System.out.println("price: "+price);
 
-	    Book b = new Book();
-	    b.setId(id);
-	    b.setName(name);
-	    b.setCategory(category);
-	    b.setDescription(description);
+	    Book b = bs.findById(id);
+	    System.out.println(b);
+//	    b.setId(id);
+	    if(!name.isEmpty()) b.setName(name);
+	    if(!category.isEmpty()) b.setCategory(category);
+	    if(!description.isEmpty()) b.setDescription(description);
 
 	    if (price != null) {
 	        b.setPrice(price);
@@ -49,7 +57,8 @@ public class UpdateBookController {
 
 	    Book b1 = bs.save(b);
 	    m.addObject("msg", b1 != null ? "Book updated successfully" : "Book not updated");
-	    m.setViewName("index");
+	    m.setViewName("adminMain");
+	    m.addObject("page","updateBook");
 	    return m;
 	}
 }

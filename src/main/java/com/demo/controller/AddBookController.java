@@ -39,7 +39,8 @@ public class AddBookController {
 		Book b1 = bs.save(b);
 		if(b1 != null) m.addObject("msg", "book inserted successfully");
 		else m.addObject("msg", "book not inserted successfully");
-		m.setViewName("index");
+		m.setViewName("adminMain");
+		m.addObject("page", "addBook");
 		return m;
 	}
 }

@@ -9,4 +9,5 @@ public interface OrderService {
 	List<BookOrder> findByUserId(int user_id);
 	List<BookOrder> findAll();
 	BookOrder findById(int id);
+	List<BookOrder> findByUserIdOrderByIdDesc(int user_id);
 }

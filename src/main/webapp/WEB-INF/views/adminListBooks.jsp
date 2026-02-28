@@ -79,25 +79,39 @@
 					<!-- 🔢 Book ID Badge -->
 					<span
 						class="position-absolute top-0 end-0 m-2 
-                             badge rounded-pill bg-dark">
+                     badge rounded-pill bg-dark">
 						#${b.id} </span>
 
 					<div class="card-body">
+						<div class="row align-items-center">
 
-						<h5 class="card-title text-primary mb-2">${b.name}</h5>
+							<!-- LEFT SIDE : IMAGE -->
+							<div class="col-4 text-center">
+								<img src="showimage/${b.id}" alt="${b.name}"
+									class="img-fluid rounded"
+									style="width: 90px; height: 120px; object-fit: contain;">
+							</div>
 
-						<p class="mb-2">
-							<span class="badge bg-info text-dark"> ${b.category} </span>
-						</p>
+							<!-- RIGHT SIDE : DETAILS -->
+							<div class="col-8">
+								<h5 class="card-title text-primary mb-2">${b.name}</h5>
 
-						<p class="mb-0">
-							<strong>Price:</strong> <span class="text-success fw-bold">
-								₹${b.price} </span>
-						</p>
+								<p class="mb-2">
+									<span class="badge bg-info text-dark"> ${b.category} </span>
+								</p>
 
+								<p class="mb-0">
+									<strong>Price:</strong> <span class="text-success fw-bold">
+										₹${b.price} </span>
+								</p>
+							</div>
+
+						</div>
 					</div>
+
 				</div>
 			</div>
+
 		</c:forEach>
 	</div>
 
